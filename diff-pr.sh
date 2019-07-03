@@ -115,7 +115,7 @@ template='
 	{{- "\n" -}}
 	{{- range $.Entries -}}
 		{{- $arch := .HasArchitecture arch | ternary arch (.Architectures | first) -}}
-		{{- $from := $.ArchDockerFrom $arch . -}}
+		{{- $froms := $.ArchDockerFroms $arch . -}}
 		{{- $outDir := join "_" $.RepoName (.Tags | last) -}}
 		git -C "$BASHBREW_CACHE/git" archive --format=tar
 		{{- " " -}}
@@ -147,11 +147,12 @@ copy-tar() {
 	local d dockerfiles=()
 	for d in "$src"/*/.bashbrew-dockerfile-name; do
 		local bf="$(< "$d")" dDir="$(dirname "$d")"
+		dockerfiles+=( "$dDir/$bf" )
 		if [ "$bf" = 'Dockerfile' ]; then
-			# "*" at the end here ensures we capture "Dockerfile.builder" style repos in a useful way too (busybox, hello-world)
-			dockerfiles+=( "$dDir/$bf"* )
-		else
-			dockerfiles+=( "$dDir/$bf" )
+			# if "Dockerfile.builder" exists, let's check that too (busybox, hello-world)
+			if [ -f "$dDir/$bf.builder" ]; then
+				dockerfiles+=( "$dDir/$bf.builder" )
+			fi
 		fi
 		rm "$d" # remove the ".bashbrew-dockerfile-name" file we created
 	done
@@ -166,12 +167,15 @@ copy-tar() {
 			$(awk '
 				toupper($1) == "COPY" || toupper($1) == "ADD" {
 					for (i = 2; i < NF; i++) {
-						print $i
+						if ($i !~ /^--chown=/) {
+							print $i
+						}
 					}
 				}
 			' "$d")
 
 			# some extra files which are likely interesting if they exist, but no big loss if they do not
+			' .dockerignore' # will be used automatically by "docker build"
 			' *.manifest' # debian/ubuntu "package versions" list
 			' *.ks' # fedora "kickstart" (rootfs build script)
 			' build*.txt' # ubuntu "build-info.txt", debian "build-command.txt"
@@ -192,7 +196,14 @@ copy-tar() {
 			f="${origF# }" # trim off leading space (indicates we don't care about failure)
 			[ "$f" = "$origF" ] && failureMatters=1 || failureMatters=
 
-			local globbed=( $(cd "$dDir" && eval "echo $f") )
+			local globbed
+			# "find: warning: -path ./xxx/ will not match anything because it ends with /."
+			local findGlobbedPath="${f%/}"
+			findGlobbedPath="${findGlobbedPath#./}"
+			globbed=( $(cd "$dDir" && find -path "./$findGlobbedPath") )
+			if [ "${#globbed[@]}" -eq 0 ]; then
+				globbed=( "$f" )
+			fi
 
 			local g
 			for g in "${globbed[@]}"; do
@@ -250,10 +261,12 @@ rm -rf tar
 git -C temp add .
 
 git -C temp diff \
-	--minimal \
-	--ignore-all-space \
-	--find-renames="$findCopies" \
-	--find-copies="$findCopies" \
 	--find-copies-harder \
+	--find-copies="$findCopies" \
+	--find-renames="$findCopies" \
+	--ignore-blank-lines \
+	--ignore-space-at-eol \
+	--ignore-space-change \
 	--irreversible-delete \
+	--minimal \
 	--staged

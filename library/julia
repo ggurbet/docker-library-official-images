@@ -1,57 +1,45 @@
-# this file is generated via https://github.com/docker-library/julia/blob/19c41722f3d366865377bd2679b026a0ab1192cb/generate-stackbrew-library.sh
+# this file is generated via https://github.com/docker-library/julia/blob/56a09f211ead57236aaedff59c61de3ed81fea72/generate-stackbrew-library.sh
 
 Maintainers: Tianon Gravi <admwiggin@gmail.com> (@tianon),
              Joseph Ferguson <yosifkit@gmail.com> (@yosifkit)
 GitRepo: https://github.com/docker-library/julia.git
 
-Tags: 1.0.2-stretch, 1.0-stretch, 1-stretch, stretch
-SharedTags: 1.0.2, 1.0, 1, latest
-Architectures: amd64, i386
-GitCommit: 467c652ab40064be58ba83ed4448f139592c7525
+Tags: 1.1.1-stretch, 1.1-stretch, 1-stretch, stretch
+SharedTags: 1.1.1, 1.1, 1, latest
+Architectures: amd64, arm64v8, i386
+GitCommit: 36c40cb93c8ca5c717ab7395a775f5683f176e97
+Directory: 1.1/stretch
+
+Tags: 1.1.1-windowsservercore-ltsc2016, 1.1-windowsservercore-ltsc2016, 1-windowsservercore-ltsc2016, windowsservercore-ltsc2016
+SharedTags: 1.1.1, 1.1, 1, latest
+Architectures: windows-amd64
+GitCommit: 36c40cb93c8ca5c717ab7395a775f5683f176e97
+Directory: 1.1/windows/windowsservercore-ltsc2016
+Constraints: windowsservercore-ltsc2016
+
+Tags: 1.1.1-windowsservercore-1803, 1.1-windowsservercore-1803, 1-windowsservercore-1803, windowsservercore-1803
+SharedTags: 1.1.1, 1.1, 1, latest
+Architectures: windows-amd64
+GitCommit: 36c40cb93c8ca5c717ab7395a775f5683f176e97
+Directory: 1.1/windows/windowsservercore-1803
+Constraints: windowsservercore-1803
+
+Tags: 1.0.4-stretch, 1.0-stretch
+SharedTags: 1.0.4, 1.0
+Architectures: amd64, arm32v7, arm64v8, i386
+GitCommit: 092cb514a9994ee61ae883f53d56ea03c89a3c0c
 Directory: 1.0/stretch
 
-Tags: 1.0.2-windowsservercore-ltsc2016, 1.0-windowsservercore-ltsc2016, 1-windowsservercore-ltsc2016, windowsservercore-ltsc2016
-SharedTags: 1.0.2, 1.0, 1, latest
+Tags: 1.0.4-windowsservercore-ltsc2016, 1.0-windowsservercore-ltsc2016
+SharedTags: 1.0.4, 1.0
 Architectures: windows-amd64
-GitCommit: 739386e833cc5e839a7bf8e42c4f2e3eed3eb11e
+GitCommit: 092cb514a9994ee61ae883f53d56ea03c89a3c0c
 Directory: 1.0/windows/windowsservercore-ltsc2016
 Constraints: windowsservercore-ltsc2016
 
-Tags: 1.0.2-windowsservercore-1709, 1.0-windowsservercore-1709, 1-windowsservercore-1709, windowsservercore-1709
-SharedTags: 1.0.2, 1.0, 1, latest
+Tags: 1.0.4-windowsservercore-1803, 1.0-windowsservercore-1803
+SharedTags: 1.0.4, 1.0
 Architectures: windows-amd64
-GitCommit: 739386e833cc5e839a7bf8e42c4f2e3eed3eb11e
-Directory: 1.0/windows/windowsservercore-1709
-Constraints: windowsservercore-1709
-
-Tags: 1.0.2-windowsservercore-1803, 1.0-windowsservercore-1803, 1-windowsservercore-1803, windowsservercore-1803
-SharedTags: 1.0.2, 1.0, 1, latest
-Architectures: windows-amd64
-GitCommit: 739386e833cc5e839a7bf8e42c4f2e3eed3eb11e
+GitCommit: 092cb514a9994ee61ae883f53d56ea03c89a3c0c
 Directory: 1.0/windows/windowsservercore-1803
 Constraints: windowsservercore-1803
-
-Tags: 0.7.0-stretch, 0.7-stretch, 0-stretch
-SharedTags: 0.7.0, 0.7, 0
-Architectures: amd64, i386
-GitCommit: 467c652ab40064be58ba83ed4448f139592c7525
-Directory: 0/stretch
-
-Tags: 0.7.0-jessie, 0.7-jessie, 0-jessie
-Architectures: amd64, i386
-GitCommit: 467c652ab40064be58ba83ed4448f139592c7525
-Directory: 0/jessie
-
-Tags: 0.7.0-windowsservercore-ltsc2016, 0.7-windowsservercore-ltsc2016, 0-windowsservercore-ltsc2016
-SharedTags: 0.7.0, 0.7, 0
-Architectures: windows-amd64
-GitCommit: 9e8bb3426385de28cfac6576baef9bf580fe0e33
-Directory: 0/windows/windowsservercore-ltsc2016
-Constraints: windowsservercore-ltsc2016
-
-Tags: 0.7.0-windowsservercore-1709, 0.7-windowsservercore-1709, 0-windowsservercore-1709
-SharedTags: 0.7.0, 0.7, 0
-Architectures: windows-amd64
-GitCommit: 9e8bb3426385de28cfac6576baef9bf580fe0e33
-Directory: 0/windows/windowsservercore-1709
-Constraints: windowsservercore-1709

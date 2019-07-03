@@ -1,65 +1,65 @@
-# this file is generated via https://github.com/docker-library/postgres/blob/7f3fd17214f5ff59feaec6126cf562710b545c73/generate-stackbrew-library.sh
+# this file is generated via https://github.com/docker-library/postgres/blob/fa41e210db87b7aa932351e68a075253078828b1/generate-stackbrew-library.sh
 
 Maintainers: Tianon Gravi <admwiggin@gmail.com> (@tianon),
              Joseph Ferguson <yosifkit@gmail.com> (@yosifkit)
 GitRepo: https://github.com/docker-library/postgres.git
 
-Tags: 11.1, 11, latest
+Tags: 12-beta2, 12
 Architectures: amd64, arm32v5, arm32v7, arm64v8, i386, ppc64le, s390x
-GitCommit: d61fd19b699b2c380da08c3a95f7272137a182bb
+GitCommit: 559d29a4f8158c35d6b50870522f532abbabe3e6
+Directory: 12
+
+Tags: 12-beta2-alpine, 12-alpine
+Architectures: amd64, arm32v6, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: ba24350aa02996f75cf5b44eea0af082775cc8ec
+Directory: 12/alpine
+
+Tags: 11.4, 11, latest
+Architectures: amd64, arm32v5, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: 246f8d41d6de8888ba82f27579bc05d9362a8641
 Directory: 11
 
-Tags: 11.1-alpine, 11-alpine, alpine
-Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
-GitCommit: 112bf5ee8455f930354bc90f32d6a1c830525ed9
+Tags: 11.4-alpine, 11-alpine, alpine
+Architectures: amd64, arm32v6, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: ba24350aa02996f75cf5b44eea0af082775cc8ec
 Directory: 11/alpine
 
-Tags: 10.6, 10
+Tags: 10.9, 10
 Architectures: amd64, arm32v5, arm32v7, arm64v8, i386, ppc64le, s390x
-GitCommit: d61fd19b699b2c380da08c3a95f7272137a182bb
+GitCommit: 59fd787a41ba4fd042f4d169556e70927c323cda
 Directory: 10
 
-Tags: 10.6-alpine, 10-alpine
-Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
-GitCommit: 7c287e7800dc08743da8d6372ab752e5438f662b
+Tags: 10.9-alpine, 10-alpine
+Architectures: amd64, arm32v6, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: ba24350aa02996f75cf5b44eea0af082775cc8ec
 Directory: 10/alpine
 
-Tags: 9.6.11, 9.6, 9
+Tags: 9.6.14, 9.6, 9
 Architectures: amd64, arm32v5, arm32v7, arm64v8, i386, ppc64le, s390x
-GitCommit: d61fd19b699b2c380da08c3a95f7272137a182bb
+GitCommit: 033f4941dde868055070eff244f23fd0f7b14ae6
 Directory: 9.6
 
-Tags: 9.6.11-alpine, 9.6-alpine, 9-alpine
-Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
-GitCommit: cb8d873277a533b2f1140a3f3624321a0c53f45d
+Tags: 9.6.14-alpine, 9.6-alpine, 9-alpine
+Architectures: amd64, arm32v6, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: ba24350aa02996f75cf5b44eea0af082775cc8ec
 Directory: 9.6/alpine
 
-Tags: 9.5.15, 9.5
+Tags: 9.5.18, 9.5
 Architectures: amd64, arm32v5, arm32v7, arm64v8, i386, ppc64le, s390x
-GitCommit: d61fd19b699b2c380da08c3a95f7272137a182bb
+GitCommit: 04626521017c8f1daa3839e3e5d36a606ec98f80
 Directory: 9.5
 
-Tags: 9.5.15-alpine, 9.5-alpine
-Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
-GitCommit: d48c7ca3c7b8c573a33b9f0598839aa7a06318ff
+Tags: 9.5.18-alpine, 9.5-alpine
+Architectures: amd64, arm32v6, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: ba24350aa02996f75cf5b44eea0af082775cc8ec
 Directory: 9.5/alpine
 
-Tags: 9.4.20, 9.4
+Tags: 9.4.23, 9.4
 Architectures: amd64, arm32v5, arm32v7, arm64v8, i386, ppc64le, s390x
-GitCommit: d61fd19b699b2c380da08c3a95f7272137a182bb
+GitCommit: 5c324b9f3e030855e94b00ae72a4936f7915d1be
 Directory: 9.4
 
-Tags: 9.4.20-alpine, 9.4-alpine
-Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
-GitCommit: d564da5142b2e5fa235707b05d8aa0fc76250418
+Tags: 9.4.23-alpine, 9.4-alpine
+Architectures: amd64, arm32v6, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: ba24350aa02996f75cf5b44eea0af082775cc8ec
 Directory: 9.4/alpine
-
-Tags: 9.3.25, 9.3
-Architectures: amd64, arm32v5, arm32v7, arm64v8, i386, ppc64le, s390x
-GitCommit: d61fd19b699b2c380da08c3a95f7272137a182bb
-Directory: 9.3
-
-Tags: 9.3.25-alpine, 9.3-alpine
-Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
-GitCommit: 4955a99b600fa0badb1e707285617a23315421af
-Directory: 9.3/alpine

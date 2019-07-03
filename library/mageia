@@ -1,12 +1,15 @@
 Maintainers: Juan Luis Baptiste <juancho@mageia.org> (@juanluisbaptiste)
 GitRepo: https://github.com/juanluisbaptiste/docker-brew-mageia.git
+GitCommit: 8fa1a171030b6bc20216cc6a6d3f6d77662eabc6
+GitFetch: refs/heads/dist
 
 Tags: 6, latest
-GitCommit: f60e1b20a5e31e72b4f49c878160dfa95f49a911
-GitFetch: refs/heads/dist
-Directory: 6
+Architectures: amd64, arm32v7
+amd64-Directory: dist/6/x86_64
+arm32v7-Directory: dist/6/armv7hl
 
-Tags: 5,5.1
-GitCommit: f60e1b20a5e31e72b4f49c878160dfa95f49a911
-GitFetch: refs/heads/dist
-Directory: 5
+Tags: 7
+Architectures: amd64, arm32v7, arm64v8
+amd64-Directory: dist/7/x86_64
+arm32v7-Directory: dist/7/armv7hl
+arm64v8-Directory: dist/7/aarch64

@@ -1,24 +1,25 @@
-#MySQL is not officially supported for arm64v8.
-#Ongoing issue for the same is: https://github.com/docker-library/mysql/issues/318
+# MySQL is not officially supported for arm64v8.
+# Ongoing issue for the same is: https://github.com/docker-library/mysql/issues/318
+# We don't support arm64v8 FTM for XWiki 10.x since that requires Java 11 and XWiki 10.x doesn't support Java 11.
 Maintainers: XWiki Core Dev Team <committers@xwiki.org> (@xwiki)
 GitRepo: https://github.com/xwiki-contrib/docker-xwiki.git
 
-Tags: 9, 9.11, 9.11.8, 9-mysql-tomcat, mysql-tomcat, lts-mysql-tomcat, lts-mysql, lts
+Tags: 10, 10.11, 10.11.8, 10-mysql-tomcat, mysql-tomcat, lts-mysql-tomcat, lts-mysql, lts
 Architectures: amd64
-GitCommit: 855e958bc9d87fb15ba44bbc6365ade8aa9133ab
-Directory: 9/mysql-tomcat
-
-Tags: 9-postgres-tomcat, 9.11-postgres-tomcat, 9.11.8-postgres-tomcat, postgres-tomcat, lts-postgres-tomcat, lts-postgres
-Architectures: amd64, arm64v8
-GitCommit: 855e958bc9d87fb15ba44bbc6365ade8aa9133ab
-Directory: 9/postgres-tomcat
-
-Tags: 10, 10.9, 10-mysql-tomcat, 10.9-mysql-tomcat, stable-mysql-tomcat, stable-mysql, stable, latest
-Architectures: amd64
-GitCommit: b3a7d3c94b503296b3e9370405442bfb7266125e
+GitCommit: 94346cc5c12e5b4410c7ee68083c596cdd708085
 Directory: 10/mysql-tomcat
 
-Tags: 10-postgres-tomcat, 10.9-postgres-tomcat, stable-postgres-tomcat, stable-postgres
-Architectures: amd64, arm64v8
-GitCommit: b3a7d3c94b503296b3e9370405442bfb7266125e
+Tags: 10-postgres-tomcat, 10.11-postgres-tomcat, 10.11.8-postgres-tomcat, postgres-tomcat, lts-postgres-tomcat, lts-postgres
+Architectures: amd64
+GitCommit: 94346cc5c12e5b4410c7ee68083c596cdd708085
 Directory: 10/postgres-tomcat
+
+Tags: 11, 11.5, 11-mysql-tomcat, 11.5-mysql-tomcat, stable-mysql-tomcat, stable-mysql, stable, latest
+Architectures: amd64
+GitCommit: 94346cc5c12e5b4410c7ee68083c596cdd708085
+Directory: 11/mysql-tomcat
+
+Tags: 11-postgres-tomcat, 11.5-postgres-tomcat, stable-postgres-tomcat, stable-postgres
+Architectures: amd64, arm64v8
+GitCommit: 94346cc5c12e5b4410c7ee68083c596cdd708085
+Directory: 11/postgres-tomcat

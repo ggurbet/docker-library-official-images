@@ -1,100 +1,99 @@
-# this file is generated via https://github.com/nodejs/docker-node/blob/119e51741fdeb1d2b25a942a20070d4c8a3ccc3a/generate-stackbrew-library.sh
+# this file is generated via https://github.com/nodejs/docker-node/blob/08875df2ddd7c961f3c57cbd45a282c66c03c9a0/generate-stackbrew-library.sh
 
 Maintainers: The Node.js Docker Team <https://github.com/nodejs/docker-node> (@nodejs)
 GitRepo: https://github.com/nodejs/docker-node.git
 
-Tags: 8.12.0-jessie, 8.12-jessie, 8-jessie, carbon-jessie, 8.12.0, 8.12, 8, carbon
-Architectures: arm32v7, amd64, i386
-GitCommit: 526c6e618300bdda0da4b3159df682cae83e14aa
+Tags: 8.16.0-jessie, 8.16-jessie, 8-jessie, carbon-jessie
+Architectures: amd64, arm32v7, i386
+GitCommit: 7e47b378c42b03ae6afae704c5bf5b724aae2b92
 Directory: 8/jessie
 
-Tags: 8.12.0-alpine, 8.12-alpine, 8-alpine, carbon-alpine
-Architectures: arm32v6, arm64v8, amd64, i386, ppc64le, s390x
-GitCommit: 526c6e618300bdda0da4b3159df682cae83e14aa
+Tags: 8.16.0-jessie-slim, 8.16-jessie-slim, 8-jessie-slim, carbon-jessie-slim
+Architectures: amd64, arm32v7, i386
+GitCommit: 7e47b378c42b03ae6afae704c5bf5b724aae2b92
+Directory: 8/jessie-slim
+
+Tags: 8.16.0-alpine, 8.16-alpine, 8-alpine, carbon-alpine
+Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
+GitCommit: 7e47b378c42b03ae6afae704c5bf5b724aae2b92
 Directory: 8/alpine
 
-Tags: 8.12.0-onbuild, 8.12-onbuild, 8-onbuild, carbon-onbuild
-Architectures: arm32v7, amd64, i386
-GitCommit: 526c6e618300bdda0da4b3159df682cae83e14aa
+Tags: 8.16.0-onbuild, 8.16-onbuild, 8-onbuild, carbon-onbuild
+Architectures: amd64, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: a8dbfa5c7cac9dca9145c6f429cd2c4f11176707
 Directory: 8/onbuild
 
-Tags: 8.12.0-slim, 8.12-slim, 8-slim, carbon-slim
-Architectures: arm32v7, amd64, i386
-GitCommit: 526c6e618300bdda0da4b3159df682cae83e14aa
-Directory: 8/slim
-
-Tags: 8.12.0-stretch, 8.12-stretch, 8-stretch, carbon-stretch
-Architectures: arm32v7, arm64v8, amd64, i386, ppc64le, s390x
-GitCommit: 526c6e618300bdda0da4b3159df682cae83e14aa
+Tags: 8.16.0-stretch, 8.16-stretch, 8-stretch, carbon-stretch, 8.16.0, 8.16, 8, carbon
+Architectures: amd64, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: 7e47b378c42b03ae6afae704c5bf5b724aae2b92
 Directory: 8/stretch
 
-Tags: 6.14.4-jessie, 6.14-jessie, 6-jessie, boron-jessie, 6.14.4, 6.14, 6, boron
-Architectures: arm32v7, amd64, i386
-GitCommit: 72dd945d29dee5afa73956ebc971bf3a472442f7
-Directory: 6/jessie
+Tags: 8.16.0-stretch-slim, 8.16-stretch-slim, 8-stretch-slim, carbon-stretch-slim, 8.16.0-slim, 8.16-slim, 8-slim, carbon-slim
+Architectures: amd64, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: 7e47b378c42b03ae6afae704c5bf5b724aae2b92
+Directory: 8/stretch-slim
 
-Tags: 6.14.4-alpine, 6.14-alpine, 6-alpine, boron-alpine
-Architectures: amd64
-GitCommit: 72dd945d29dee5afa73956ebc971bf3a472442f7
-Directory: 6/alpine
+Tags: 12.6.0-alpine, 12.6-alpine, 12-alpine, current-alpine, alpine
+Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
+GitCommit: be0fbedc36a8746a7cbe3b3b1972175177fcdadd
+Directory: 12/alpine
 
-Tags: 6.14.4-onbuild, 6.14-onbuild, 6-onbuild, boron-onbuild
-Architectures: arm32v7, amd64, i386
-GitCommit: 72dd945d29dee5afa73956ebc971bf3a472442f7
-Directory: 6/onbuild
+Tags: 12.6.0-stretch, 12.6-stretch, 12-stretch, current-stretch, stretch, 12.6.0, 12.6, 12, current, latest
+Architectures: amd64, arm32v7, arm64v8, ppc64le, s390x
+GitCommit: be0fbedc36a8746a7cbe3b3b1972175177fcdadd
+Directory: 12/stretch
 
-Tags: 6.14.4-slim, 6.14-slim, 6-slim, boron-slim
-Architectures: arm32v7, amd64, i386
-GitCommit: 72dd945d29dee5afa73956ebc971bf3a472442f7
-Directory: 6/slim
+Tags: 12.6.0-stretch-slim, 12.6-stretch-slim, 12-stretch-slim, current-stretch-slim, stretch-slim, 12.6.0-slim, 12.6-slim, 12-slim, current-slim, slim
+Architectures: amd64, arm32v7, arm64v8, ppc64le, s390x
+GitCommit: be0fbedc36a8746a7cbe3b3b1972175177fcdadd
+Directory: 12/stretch-slim
 
-Tags: 6.14.4-stretch, 6.14-stretch, 6-stretch, boron-stretch
-Architectures: arm32v7, arm64v8, amd64, i386, ppc64le, s390x
-GitCommit: 72dd945d29dee5afa73956ebc971bf3a472442f7
-Directory: 6/stretch
-
-Tags: 11.2.0-alpine, 11.2-alpine, 11-alpine, alpine
-Architectures: arm32v6, arm64v8, amd64, i386, ppc64le, s390x
-GitCommit: 241b2cfaca1ba225f312d439365d4410c94737fb
+Tags: 11.15.0-alpine, 11.15-alpine, 11-alpine
+Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
+GitCommit: 7e47b378c42b03ae6afae704c5bf5b724aae2b92
 Directory: 11/alpine
 
-Tags: 11.2.0-slim, 11.2-slim, 11-slim, slim
-Architectures: arm32v7, arm64v8, amd64, ppc64le, s390x
-GitCommit: 241b2cfaca1ba225f312d439365d4410c94737fb
-Directory: 11/slim
-
-Tags: 11.2.0-stretch, 11.2-stretch, 11-stretch, stretch, 11.2.0, 11.2, 11, latest
-Architectures: arm32v7, arm64v8, amd64, ppc64le, s390x
-GitCommit: 241b2cfaca1ba225f312d439365d4410c94737fb
+Tags: 11.15.0-stretch, 11.15-stretch, 11-stretch, 11.15.0, 11.15, 11
+Architectures: amd64, arm32v7, arm64v8, ppc64le, s390x
+GitCommit: 7e47b378c42b03ae6afae704c5bf5b724aae2b92
 Directory: 11/stretch
 
-Tags: 10.13.0-jessie, 10.13-jessie, 10-jessie, dubnium-jessie, 10.13.0, 10.13, 10, dubnium
-Architectures: arm32v7, amd64
-GitCommit: 336fb229392876a5f0d893436aeccf8c80011eeb
+Tags: 11.15.0-stretch-slim, 11.15-stretch-slim, 11-stretch-slim, 11.15.0-slim, 11.15-slim, 11-slim
+Architectures: amd64, arm32v7, arm64v8, ppc64le, s390x
+GitCommit: 7e47b378c42b03ae6afae704c5bf5b724aae2b92
+Directory: 11/stretch-slim
+
+Tags: 10.16.0-jessie, 10.16-jessie, 10-jessie, dubnium-jessie, lts-jessie
+Architectures: amd64, arm32v7
+GitCommit: f8f2384f7edc345f5ffc0496458005981b512882
 Directory: 10/jessie
 
-Tags: 10.13.0-alpine, 10.13-alpine, 10-alpine, dubnium-alpine
-Architectures: arm32v6, arm64v8, amd64, i386, ppc64le, s390x
-GitCommit: 336fb229392876a5f0d893436aeccf8c80011eeb
+Tags: 10.16.0-jessie-slim, 10.16-jessie-slim, 10-jessie-slim, dubnium-jessie-slim, lts-jessie-slim
+Architectures: amd64, arm32v7
+GitCommit: f8f2384f7edc345f5ffc0496458005981b512882
+Directory: 10/jessie-slim
+
+Tags: 10.16.0-alpine, 10.16-alpine, 10-alpine, dubnium-alpine, lts-alpine
+Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
+GitCommit: f8f2384f7edc345f5ffc0496458005981b512882
 Directory: 10/alpine
 
-Tags: 10.13.0-slim, 10.13-slim, 10-slim, dubnium-slim
-Architectures: arm32v7, amd64
-GitCommit: 336fb229392876a5f0d893436aeccf8c80011eeb
-Directory: 10/slim
-
-Tags: 10.13.0-stretch, 10.13-stretch, 10-stretch, dubnium-stretch
-Architectures: arm32v7, arm64v8, amd64, ppc64le, s390x
-GitCommit: 336fb229392876a5f0d893436aeccf8c80011eeb
+Tags: 10.16.0-stretch, 10.16-stretch, 10-stretch, dubnium-stretch, lts-stretch, 10.16.0, 10.16, 10, dubnium, lts
+Architectures: amd64, arm32v7, arm64v8, ppc64le, s390x
+GitCommit: f8f2384f7edc345f5ffc0496458005981b512882
 Directory: 10/stretch
+
+Tags: 10.16.0-stretch-slim, 10.16-stretch-slim, 10-stretch-slim, dubnium-stretch-slim, lts-stretch-slim, 10.16.0-slim, 10.16-slim, 10-slim, dubnium-slim, lts-slim
+Architectures: amd64, arm32v7, arm64v8, ppc64le, s390x
+GitCommit: f8f2384f7edc345f5ffc0496458005981b512882
+Directory: 10/stretch-slim
 
 Tags: chakracore-8.11.1, chakracore-8.11, chakracore-8
 Architectures: amd64
-GitCommit: 947280600648b70e067d35415d6812fd03127def
+GitCommit: 4c59289300f9b4f7e95d5f30a008212b450a3bf3
 Directory: chakracore/8
 
 Tags: chakracore-10.13.0, chakracore-10.13, chakracore-10, chakracore
 Architectures: amd64
-GitCommit: 69c8a5f448f46f9e34d7fb577eca79ba01f6864d
+GitCommit: 4c59289300f9b4f7e95d5f30a008212b450a3bf3
 Directory: chakracore/10
-

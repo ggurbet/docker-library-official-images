@@ -1,15 +1,15 @@
-# this file is generated via https://github.com/docker-library/memcached/blob/0642c9f9a9ef8087e6fa7fe848ee7fe5cc9a13ca/generate-stackbrew-library.sh
+# this file is generated via https://github.com/docker-library/memcached/blob/d479d257a7249542b31afd799f22d5b39faa2781/generate-stackbrew-library.sh
 
 Maintainers: Tianon Gravi <admwiggin@gmail.com> (@tianon),
              Joseph Ferguson <yosifkit@gmail.com> (@yosifkit)
 GitRepo: https://github.com/docker-library/memcached.git
 
-Tags: 1.5.12, 1.5, 1, latest
+Tags: 1.5.16, 1.5, 1, latest
 Architectures: amd64, arm32v5, arm32v7, arm64v8, i386, ppc64le, s390x
-GitCommit: c7bc33a596845a439051bbe32357b4b0e6e9dddc
+GitCommit: d7ef16344d5c0199a41dba750b2da7f733360cb7
 Directory: debian
 
-Tags: 1.5.12-alpine, 1.5-alpine, 1-alpine, alpine
-Architectures: amd64, arm32v6, arm64v8, i386, ppc64le, s390x
-GitCommit: c7bc33a596845a439051bbe32357b4b0e6e9dddc
+Tags: 1.5.16-alpine, 1.5-alpine, 1-alpine, alpine
+Architectures: amd64, arm32v6, arm32v7, arm64v8, i386, ppc64le, s390x
+GitCommit: 97c659e9dae9b5f907783d31afdc4e98076b37c5
 Directory: alpine

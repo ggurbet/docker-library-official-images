@@ -1,14 +1,22 @@
-FROM docker:stable-git
+FROM tianon/docker-tianon
 
-RUN apk add --no-cache \
-# bash for running scripts
-		bash \
-# go for compiling bashbrew
-		go libc-dev \
-# ssl for downloading files
-		libressl \
-# coreutils for real "tac" so it isn't busybox-buggy (where it seems to fail if the pipe is closed prematurely, which defeats the whole purpose of the "tac|tac" idiom)
-		coreutils
+RUN set -eux; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+# wget for downloading files (especially in tests, which run in this environment)
+		ca-certificates \
+		wget \
+# git for cloning source code
+		git \
+	; \
+# go for compiling bashbrew (backports to get new enough version and to make it work on s390x)
+	suite="$(awk '$1 == "deb" && $4 == "main" && $3 !~ /[\/-]/ { print $3; exit }' /etc/apt/sources.list)"; \
+	echo "deb http://deb.debian.org/debian $suite-backports main" > /etc/apt/sources.list.d/backports.list; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends -t "$suite-backports" \
+		golang-go \
+	; \
+	rm -rf /var/lib/apt/lists/*
 
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:$PATH
@@ -27,11 +35,9 @@ RUN mkdir -p "$BASHBREW_CACHE" \
 WORKDIR $DIR
 COPY . $DIR
 
-RUN set -ex; \
-	cd bashbrew/go; \
-	export GOPATH="$PWD:$PWD/vendor"; \
-	cd src; \
-	go install -v ./...
+RUN set -eux; \
+	CGO_ENABLED=0 ./bashbrew/bashbrew.sh --help > /dev/null; \
+	cp -vL bashbrew/go/bin/bashbrew /usr/local/bin/
 
 VOLUME $BASHBREW_CACHE
 

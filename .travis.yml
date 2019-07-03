@@ -1,16 +1,12 @@
 language: go
-go: 1.7.x
-
-# allow for use of Docker-based workers
-sudo: false
+go: 1.12.x
 
 install:
-    - go get -v -u github.com/constabulary/gb/...
+    - ./bashbrew/bashbrew.sh --help > /dev/null
+    - export PATH="$PWD/bashbrew/go/bin:$PATH"
 
 before_script:
     - env | sort
-    - ( cd bashbrew/go && gb build )
-    - export PATH="$PWD/bashbrew/go/bin:$PATH"
 
 script:
     - ./bashbrew/travis.sh

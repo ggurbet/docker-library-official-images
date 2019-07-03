@@ -38,7 +38,7 @@ func sortRepos(repos []string, applyConstraints bool) ([]string, error) {
 	return ret, nil
 }
 
-func (r Repo) SortedEntries(applyConstraints bool) ([]manifest.Manifest2822Entry, error) {
+func (r Repo) SortedEntries(applyConstraints bool) ([]*manifest.Manifest2822Entry, error) {
 	entries := r.Entries()
 
 	// short circuit if we don't have to go further
@@ -49,7 +49,7 @@ func (r Repo) SortedEntries(applyConstraints bool) ([]manifest.Manifest2822Entry
 	// create individual "Repo" objects for each entry in "r" so they can be sorted by the same "sortRepoObjects" function
 	rs := []*Repo{}
 	for i := range entries {
-		rs = append(rs, r.EntryRepo(&entries[i]))
+		rs = append(rs, r.EntryRepo(entries[i]))
 	}
 
 	rs, err := sortRepoObjects(rs, applyConstraints)
@@ -57,9 +57,9 @@ func (r Repo) SortedEntries(applyConstraints bool) ([]manifest.Manifest2822Entry
 		return nil, err
 	}
 
-	ret := []manifest.Manifest2822Entry{}
+	ret := []*manifest.Manifest2822Entry{}
 	for _, entryR := range rs {
-		ret = append(ret, *entryR.TagEntry)
+		ret = append(ret, entryR.TagEntries...)
 	}
 	return ret, nil
 }
@@ -79,7 +79,7 @@ func sortRepoObjects(rs []*Repo, applyConstraints bool) ([]*Repo, error) {
 	for _, r := range rs {
 		node := r.Identifier()
 		for _, entry := range r.Entries() {
-			for _, tag := range r.Tags("", false, entry) {
+			for _, tag := range r.Tags(namespace, false, entry) {
 				if canonicalRepo, ok := canonicalRepos[tag]; ok && canonicalRepo.TagName != "" {
 					// if we run into a duplicate, we want to prefer a specific tag over a full repo
 					continue
@@ -101,27 +101,28 @@ func sortRepoObjects(rs []*Repo, applyConstraints bool) ([]*Repo, error) {
 				continue
 			}
 
-			from, err := r.DockerFrom(&entry)
+			froms, err := r.DockerFroms(entry)
 			if err != nil {
 				return nil, err
 			}
-			from = latestizeRepoTag(from)
 
-			fromNode, ok := canonicalNodes[from]
-			if !ok {
-				// if our FROM isn't in the list of things we're sorting, it isn't relevant in this context
-				continue
-			}
+			for _, from := range froms {
+				fromNode, ok := canonicalNodes[from]
+				if !ok {
+					// if our FROM isn't in the list of things we're sorting, it isn't relevant in this context
+					continue
+				}
 
-			// TODO somehow reconcile/avoid "a:a -> b:b, b:b -> a:c" (which will exhibit here as cyclic)
-			for _, tag := range r.Tags("", false, entry) {
-				if tagNode, ok := canonicalNodes[tag]; ok {
-					if tagNode == fromNode {
-						// don't be cyclic
-						continue
-					}
-					if err := network.AddEdge(fromNode, tagNode); err != nil {
-						return nil, err
+				// TODO somehow reconcile/avoid "a:a -> b:b, b:b -> a:c" (which will exhibit here as cyclic)
+				for _, tag := range r.Tags(namespace, false, entry) {
+					if tagNode, ok := canonicalNodes[tag]; ok {
+						if tagNode == fromNode {
+							// don't be cyclic
+							continue
+						}
+						if err := network.AddEdge(fromNode, tagNode); err != nil {
+							return nil, err
+						}
 					}
 				}
 			}

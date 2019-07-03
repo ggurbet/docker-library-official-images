@@ -8,11 +8,11 @@ Tags: 7, latest
 Architectures: amd64
 GitFetch: refs/heads/7
 Directory: sl7
-GitCommit: 3d25951933c16ccfdccb4020122ec97fbef4d9c5
+GitCommit: 0d8792816e36ec1a2f2023f48858737f6d683680
 
 # For the SL6 container
 Tags: 6
 Architectures: amd64
 GitFetch: refs/heads/6
 Directory: sl6
-GitCommit: 53e0b1d1819c45868d2ede8accd285c3f164d038
+GitCommit: 098732d7f64270125a178194dbc0847bd99c1215

@@ -13,17 +13,76 @@ if [ "$#" -eq 0 ]; then
 	set -- '--all'
 fi
 
+_is_naughty() {
+	local from="$1"; shift
+
+	case "$BASHBREW_ARCH=$from" in
+		# a few images that no longer exist (and are thus not permissible)
+		# https://techcommunity.microsoft.com/t5/Containers/Removing-the-latest-Tag-An-Update-on-MCR/ba-p/393045
+		*=mcr.microsoft.com/windows/nanoserver:latest \
+		| *=mcr.microsoft.com/windows/servercore:latest \
+		| *=microsoft/nanoserver:latest \
+		| *=microsoft/windowsservercore:latest \
+		) return 0 ;;
+
+		# a few explicitly permissible exceptions to Santa's naughty list
+		*=scratch \
+		| amd64=docker.elastic.co/elasticsearch/elasticsearch:* \
+		| amd64=docker.elastic.co/kibana/kibana:* \
+		| amd64=docker.elastic.co/logstash/logstash:* \
+		| windows-*=mcr.microsoft.com/windows/nanoserver:* \
+		| windows-*=mcr.microsoft.com/windows/servercore:* \
+		| windows-*=microsoft/nanoserver:* \
+		| windows-*=microsoft/windowsservercore:* \
+		) return 1 ;;
+
+		# "x/y" and not an approved exception
+		*/*) return 0 ;;
+	esac
+
+	# must be some other official image AND support our current architecture
+	local archSupported
+	if archSupported="$(bashbrew cat --format '{{ .TagEntry.HasArchitecture arch | ternary arch "" }}' "$from")" && [ -n "$archSupported" ]; then
+		return 1
+	fi
+
+	return 0
+}
+
+_arches() {
+	bashbrew cat --format '
+		{{- range .TagEntries -}}
+			{{- .Architectures | join "\n" -}}
+			{{- "\n" -}}
+		{{- end -}}
+	' "$@" | sort -u
+}
+
+_froms() {
+	bashbrew cat --format '
+		{{- range .TagEntries -}}
+			{{- $.DockerFroms . | join "\n" -}}
+			{{- "\n" -}}
+		{{- end -}}
+	' "$@" | sort -u
+}
+
 declare -A naughtyFromsArches=(
 	#[img:tag=from:tag]='arch arch ...'
 )
 naughtyFroms=()
+declare -A allNaughty=(
+	#[img:tag]=1
+)
 
 tags="$(bashbrew list --uniq "$@" | sort -u)"
 for img in $tags; do
-	for BASHBREW_ARCH in $(bashbrew cat --format '{{ join " " .TagEntry.Architectures }}' "$img"); do
+	arches="$(_arches "$img")"
+	hasNice= # do we have _any_ arches that aren't naughty? (so we can make the message better if not)
+	for BASHBREW_ARCH in $arches; do
 		export BASHBREW_ARCH
 
-		if ! from="$(bashbrew cat --format '{{ $.DockerFrom .TagEntry }}' "$img" 2>/dev/null)"; then
+		if ! froms="$(_froms "$img" 2>/dev/null)"; then
 			# if we can't fetch the tags from their real locations, let's try the warehouse
 			refsList="$(
 				bashbrew list --uniq "$img" \
@@ -37,37 +96,38 @@ for img in $tags; do
 				fetch --no-tags --quiet \
 				https://github.com/docker-library/commit-warehouse.git \
 				$refsList
-			from="$(bashbrew cat --format '{{ $.DockerFrom .TagEntry }}' "$img")"
+			froms="$(_froms "$img")"
 		fi
 
-		case "$BASHBREW_ARCH=$from" in
-			# a few explicitly permissible exceptions to Santa's naughty list
-			*=scratch \
-			| amd64=docker.elastic.co/elasticsearch/elasticsearch:* \
-			| amd64=docker.elastic.co/kibana/kibana:* \
-			| amd64=docker.elastic.co/logstash/logstash:* \
-			| windows-*=microsoft/nanoserver \
-			| windows-*=microsoft/nanoserver:* \
-			| windows-*=microsoft/windowsservercore \
-			| windows-*=microsoft/windowsservercore:* \
-			) continue ;;
-		esac
+		[ -n "$froms" ] # rough sanity check
 
-		if ! listOutput="$(bashbrew cat --format '{{ .TagEntry.HasArchitecture arch | ternary arch "" }}' "$from")" || [ -z "$listOutput" ]; then
-			if [ -z "${naughtyFromsArches["$img=$from"]:-}" ]; then
-				naughtyFroms+=( "$img=$from" )
+		for from in $froms; do
+			if _is_naughty "$from"; then
+				if [ -z "${naughtyFromsArches["$img=$from"]:-}" ]; then
+					naughtyFroms+=( "$img=$from" )
+				else
+					naughtyFromsArches["$img=$from"]+=', '
+				fi
+				naughtyFromsArches["$img=$from"]+="$BASHBREW_ARCH"
 			else
-				naughtyFromsArches["$img=$from"]+=', '
+				hasNice=1
 			fi
-			naughtyFromsArches["$img=$from"]+="$BASHBREW_ARCH"
-		fi
+		done
 	done
+
+	if [ -z "$hasNice" ]; then
+		allNaughty["$img"]=1
+	fi
 done
 
 for naughtyFrom in "${naughtyFroms[@]:-}"; do
 	[ -n "$naughtyFrom" ] || continue # https://mywiki.wooledge.org/BashFAQ/112#BashFAQ.2F112.line-8 (empty array + "set -u" + bash 4.3 == sad day)
 	img="${naughtyFrom%%=*}"
 	from="${naughtyFrom#$img=}"
-	arches="${naughtyFromsArches[$naughtyFrom]}"
-	echo " - $img (FROM $from) [$arches]"
+	if [ -n "${allNaughty["$img"]:-}" ]; then
+		echo " - $img (FROM $from) -- completely unsupported base!"
+	else
+		arches="${naughtyFromsArches[$naughtyFrom]}"
+		echo " - $img (FROM $from) [$arches]"
+	fi
 done

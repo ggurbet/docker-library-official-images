@@ -2,14 +2,14 @@ Maintainers: David Barratt <dbarratt@wikimedia.org> (@davidbarratt),
              Kunal Mehta <legoktm@wikimedia.org> (@legoktm),
              addshore <addshorewiki@gmail.com> (@addshore)
 GitRepo: https://github.com/wikimedia/mediawiki-docker.git
-GitCommit: 41b4758701e47c363a49ff2ef8835be5f69cf383
+GitCommit: b3175c9d4f77220cee1c4ba942f9d2ff2070116e
 Architectures: amd64, arm32v5, arm32v7, arm64v8, i386, ppc64le
 
-Tags: lts, stable, latest, 1.31, 1.31.1
+Tags: 1.32.2, 1.32, stable, latest
+Directory: 1.32
+
+Tags: 1.31.2, 1.31, lts, legacy
 Directory: 1.31
 
-Tags: legacy, 1.30, 1.30.1
-Directory: 1.30
-
-Tags: legacylts, 1.27, 1.27.5
+Tags: 1.27.6, 1.27, legacylts
 Directory: 1.27

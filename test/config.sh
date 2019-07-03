@@ -11,12 +11,17 @@ globalTests+=(
 # for "explicit" images, only run tests that are explicitly specified for that image/variant
 explicitTests+=(
 	[:onbuild]=1
+	[:nanoserver]=1
+	[:windowsservercore]=1
 )
 imageTests[:onbuild]+='
 	override-cmd
 '
 
 testAlias+=(
+	[amazoncorretto]='openjdk'
+	[adoptopenjdk]='openjdk'
+	[sapmachine]='openjdk'
 	[iojs]='node'
 	[jruby]='ruby'
 	[pypy]='python'
@@ -26,6 +31,7 @@ testAlias+=(
 
 	[mariadb]='mysql'
 	[percona]='mysql'
+	[percona:psmdb]='mongo'
 
 	[hola-mundo]='hello-world'
 	[hello-seattle]='hello-world'
@@ -88,6 +94,7 @@ imageTests+=(
 	'
 	[haskell]='
 		haskell-cabal
+		haskell-stack
 		haskell-ghci
 		haskell-runhaskell
 	'
@@ -123,6 +130,17 @@ imageTests+=(
 		mysql-initdb
 		mysql-log-bin
 	'
+	[nextcloud]='
+		nextcloud-cli-mysql
+		nextcloud-cli-postgres
+		nextcloud-cli-sqlite
+	'
+	[nextcloud:apache]='
+		nextcloud-apache-run
+	'
+	[nextcloud:fpm]='
+		nextcloud-fpm-run
+	'
 	[node]='
 		node-hello-world
 	'
@@ -133,11 +151,14 @@ imageTests+=(
 	[openjdk]='
 		java-hello-world
 		java-uimanager-font
+		java-ca-certificates
 	'
 	[open-liberty]='
 		open-liberty-hello-world
 	'
 	[percona]='
+		percona-tokudb
+		percona-rocksdb
 	'
 	[perl]='
 		perl-hello-world
@@ -171,6 +192,7 @@ imageTests+=(
 	'
 	[rabbitmq]='
 		rabbitmq-basics
+		rabbitmq-tls
 	'
 	[r-base]='
 	'
@@ -254,10 +276,14 @@ globalExcludeTests+=(
 	# alpine/slim openjdk images are headless and so can't do font stuff
 	[openjdk:alpine_java-uimanager-font]=1
 	[openjdk:slim_java-uimanager-font]=1
+	# and adoptopenjdk has opted not to
+	[adoptopenjdk_java-uimanager-font]=1
 
 	# no "native" dependencies
 	[ruby:alpine_ruby-bundler]=1
 	[ruby:alpine_ruby-gems]=1
 	[ruby:slim_ruby-bundler]=1
 	[ruby:slim_ruby-gems]=1
+	[percona:psmdb_percona-tokudb]=1
+	[percona:psmdb_percona-rocksdb]=1
 )

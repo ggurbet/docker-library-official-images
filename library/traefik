@@ -1,20 +1,38 @@
 Maintainers: Emile Vauge <emile@vauge.com> (@emilevauge), Vincent Demeester <vincent@sbr.pm> (@vdemeester), Ludovic Fernandez <ludovic@containo.us> (@ldez), Julien Salleyron <julien@containo.us> (@juliens), Nicolas Mengin <nicolas@containo.us> (@nmengin), Michael Matur <michael@containo.us> (@mmatur), Damien Duportal <damien@containo.us> (@dduportal)
 GitRepo: https://github.com/containous/traefik-library-image.git
 
-Tags: v1.7.4, 1.7.4, v1.7, 1.7, maroilles, latest
+Tags: v2.0.0-alpha8, 2.0.0-alpha8, v2.0, 2.0, faisselle
 Architectures: amd64, arm64v8, arm32v6
-GitCommit: fcb97d804beffa33d0547ad8c54f1d248ceaba78
+GitCommit: 70857afb0be3c5b7f9c2be685fdfef62d5dcfa8c
 amd64-Directory: scratch/amd64
 arm32v6-Directory: scratch/arm
 arm64v8-Directory: scratch/arm64
 
-Tags: v1.7.4-alpine, 1.7.4-alpine, v1.7-alpine, 1.7-alpine, maroilles-alpine, alpine
+Tags: v2.0.0-alpha8-alpine, 2.0.0-alpha8-alpine, v2.0-alpine, 2.0-alpine, faisselle-alpine
 Architectures: amd64, arm64v8, arm32v6
-GitCommit: fcb97d804beffa33d0547ad8c54f1d248ceaba78
+GitCommit: 70857afb0be3c5b7f9c2be685fdfef62d5dcfa8c
 Directory: alpine
 
-Tags: v1.7.4-nanoserver, 1.7.4-nanoserver, v1.7-nanoserver, 1.7-nanoserver, maroilles-nanoserver, v1.7.4-nanoserver-sac2016, 1.7.4-nanoserver-sac2016, v1.7-nanoserver-sac2016, 1.7-nanoserver-sac2016, maroilles-nanoserver-sac2016, nanoserver, nanoserver-sac2016
+Tags: v2.0.0-alpha8-nanoserver, 2.0.0-alpha8-nanoserver, v2.0-nanoserver, 2.0-nanoserver, faisselle-nanoserver, v2.0.0-alpha8-nanoserver-sac2016, 2.0.0-alpha8-nanoserver-sac2016, v2.0-nanoserver-sac2016, 2.0-nanoserver-sac2016, faisselle-nanoserver-sac2016
 Architectures: windows-amd64
-GitCommit: fcb97d804beffa33d0547ad8c54f1d248ceaba78
+GitCommit: 70857afb0be3c5b7f9c2be685fdfef62d5dcfa8c
+Directory: windows
+Constraints: nanoserver-sac2016
+
+Tags: v1.7.12, 1.7.12, v1.7, 1.7, maroilles, latest
+Architectures: amd64, arm32v6, arm64v8
+GitCommit: 8c0a8508ea75d5a491abadb7fc5bfa33b2beb3d7
+amd64-Directory: scratch/amd64
+arm32v6-Directory: scratch/arm
+arm64v8-Directory: scratch/arm64
+
+Tags: v1.7.12-alpine, 1.7.12-alpine, v1.7-alpine, 1.7-alpine, maroilles-alpine, alpine
+Architectures: amd64, arm32v6, arm64v8
+GitCommit: 8c0a8508ea75d5a491abadb7fc5bfa33b2beb3d7
+Directory: alpine
+
+Tags: v1.7.12-nanoserver, 1.7.12-nanoserver, v1.7-nanoserver, 1.7-nanoserver, maroilles-nanoserver, v1.7.11-nanoserver-sac2016, 1.7.11-nanoserver-sac2016, v1.7-nanoserver-sac2016, 1.7-nanoserver-sac2016, maroilles-nanoserver-sac2016, nanoserver, nanoserver-sac2016
+Architectures: windows-amd64
+GitCommit: 8c0a8508ea75d5a491abadb7fc5bfa33b2beb3d7
 Directory: windows
 Constraints: nanoserver-sac2016
